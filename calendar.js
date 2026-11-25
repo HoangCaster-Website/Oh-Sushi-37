@@ -1,6 +1,8 @@
 (() => {
   'use strict';
-  const schedule = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent).openingHoursSpecification;
+  const restaurant = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent);
+  const schedule = restaurant.openingHoursSpecification;
+  const specialHours = restaurant.specialOpeningHoursSpecification || [];
   const localClock = new Intl.DateTimeFormat('en-CA', {timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'});
   const weekday = new Intl.DateTimeFormat('en-US', {weekday: 'long', timeZone: 'Europe/Berlin'});
   function now() {
@@ -14,6 +16,8 @@
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
     const date = new Date(`${value}T12:00:00Z`);
     if (!Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== value) return null;
+    const special = specialHours.find(entry => validOn(entry, value));
+    if (special) return special;
     const day = weekday.format(date);
     return schedule.find(entry => validOn(entry, value) && [].concat(entry.dayOfWeek).some(item => item.split('/').pop() === day)) || null;
   }

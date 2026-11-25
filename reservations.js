@@ -30,7 +30,7 @@
         const dayName = new Intl.DateTimeFormat('de-DE', {weekday: 'long', timeZone: 'Europe/Berlin'}).format(date);
         const hours = calendar.forDate(dateField.value);
         if (!hours || hours.opens === hours.closes) {
-          const message = `${dayName} ist Ruhetag. Bitte wählen Sie einen anderen Tag.`;
+          const message = hours?.description || `${dayName} ist Ruhetag. Bitte wählen Sie einen anderen Tag.`;
           dateField.setCustomValidity(message);
           hoursHint.textContent = `${message} ${holidayNote}`;
         } else {

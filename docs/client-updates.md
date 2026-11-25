@@ -65,3 +65,11 @@ Từ 08/11/2026:
 | Sonntag | 11:30–22:30 |
 
 Thêm “An Feiertagen können die Öffnungszeiten abweichen.” Không tự đặt giờ ngày lễ. Lịch 24/10 còn áp dụng đến hết 07/11. Hai giai đoạn có ngày hiệu lực trong bảng giờ và JSON-LD; form áp dụng theo ngày đặt bàn, do đó có thể đặt thứ Ba 10/11 ngay trước khi lịch mới bắt đầu, đồng thời chặn thứ Hai 09/11. Website vẫn thuần HTML/CSS/JS trên GitHub Pages, không thêm dịch vụ bên ngoài.
+
+## Popup lịch lễ — 25/11/2026
+
+Theo ảnh thông báo khách gửi: nghỉ 24/12/2026, 25/12/2026 và 01/01/2027; ngày 26/12/2026 mở lại lúc 17:00. Giữ giờ đóng cửa thứ Bảy theo lịch đã xác nhận là 22:30. Không thêm ưu đãi hoặc giảm giá. Dựng lại nội dung bằng HTML thay vì nhúng ảnh chụp, dùng nền đen, điểm màu champagne, nhánh thông SVG tự vẽ và logo màu gốc.
+
+Popup hiện sau 900ms một lần mỗi phiên truy cập, đóng bằng X/Escape/click ngoài; có link xem lại ở hero và bảng giờ. Hủy tự hiện khi khách đang thao tác hoặc mở giỏ/đặt bàn. Session storage bị chặn không làm hỏng popup. Từ 02/01/2027 giờ Đức popup/link tự ẩn, kể cả tab đang mở. Lịch lễ trong contact vẫn đọc được khi không chạy JavaScript.
+
+Thêm lịch ngoại lệ vào Restaurant JSON-LD và cho form đặt bàn dùng cùng nguồn: chặn ngày nghỉ; ngày 26/12 chặn giờ trước 17:00. Menu, giá, địa chỉ, email, giỏ và lịch tuần giữ nguyên.

@@ -27,6 +27,7 @@ Mở http://localhost:4173/. Không cần npm hoặc framework. Website cũng c�
 - `app.js`: navigation mobile, lọc menu, tìm kiếm và liên kết đến nhóm món.
 - `orders.js`: chọn món/biến thể, giỏ hàng, số lượng, tổng tiền và email yêu cầu đặt món.
 - `calendar.js`: đọc lịch có ngày hiệu lực từ Restaurant JSON-LD, chuyển giờ theo Europe/Berlin và tự ẩn thông báo ưu đãi khi hết hạn.
+- `holiday-notice.js` / `holiday.css`: popup lịch lễ Giáng sinh và năm mới, tự hiện một lần mỗi phiên; có link xem lại trên hero và trong phần giờ mở cửa.
 - `reservations.js`: form đặt bàn, kiểm tra ngày/giờ theo lịch có hiệu lực cho ngày khách chọn và soạn email yêu cầu.
 - `dialogs.js` / `contact.js`: quản lý dialog, focus bàn phím và email/copy dùng chung cho đặt bàn và đặt món.
 - `assets/`: logo, ảnh WebP và font local có giấy phép OFL.
@@ -50,6 +51,8 @@ Lịch 24/10 được giữ đến hết 07/11/2026. Từ 08/11/2026: thứ Hai 
 Thông báo ưu đãi 20% hiển thị đến hết ngày 07/11/2026 (giờ Đức), tự ẩn khi sang ngày 08/11. Chỉ hiển thị thông báo theo xác nhận của khách; giá menu/catalog/giỏ hàng không tự giảm. Không tự đặt ngày bắt đầu hoặc điều kiện ưu đãi chưa được cung cấp. Tab đang mở cập nhật tại ranh giới phút và khi trở lại từ nền. Khi JavaScript tắt, hai lịch vẫn có ngày hiệu lực rõ ràng, thông báo ưu đãi mặc định ẩn.
 
 QR SVG ở footer tiếp tục mở Google Maps theo địa chỉ đang có. Xem `docs/client-updates.md`.
+
+Lịch lễ theo ảnh khách gửi ngày 25/11/2026: nghỉ 24–25/12/2026 và 01/01/2027; ngày 26/12/2026 mở từ 17:00, giữ giờ đóng cửa thứ Bảy 22:30. `specialOpeningHoursSpecification` trong JSON-LD được ưu tiên hơn lịch tuần khi kiểm tra đặt bàn. Lịch lễ có bản HTML trong phần liên hệ kể cả khi JavaScript tắt. Popup và link xem lại tự ngừng từ 02/01/2027 theo Europe/Berlin. Chạy `node scripts/test-calendar.cjs` để kiểm tra ngày nghỉ, ngày mở lại và lịch tuần.
 
 Muốn đổi đích QR, cập nhật link/text ở footer trong `index.html`, rồi chạy `python3 scripts/generate_qr.py` với package build-only `qrcode` đã cài. Website không tải dịch vụ QR bên ngoài.
 

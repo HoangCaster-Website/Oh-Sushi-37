@@ -154,4 +154,13 @@ Có semantic landmarks, một h1, heading hierarchy, alt, focus states, skip lin
 - Kiểm tra trước/sau mốc 07/11 23:59:59 → 08/11 00:00 theo giờ Đức, với thiết bị dùng Asia/Bangkok và America/Los_Angeles. Timer chuyển ngày trên tab đang mở tự ẩn ưu đãi/lịch cũ, đổi summary và min date trong form; visibility/pageshow làm mới khi quay lại tab.
 - Viewport 320/375/390/430/768/1024/1440/1920 cho cả trước/sau mốc chuyển: không overflow. Xem screenshot hero/banner và bảng giờ trên mobile/desktop. Khi tắt JS, hai bảng vẫn có ngày hiệu lực rõ ràng, hero dùng thông tin ngày chuyển, banner mặc định ẩn để không quảng cáo ưu đãi hết hạn.
 - Axe trước/sau ở 390/1440: 0 violations. Chạy lại toàn bộ menu 196 mục/31 category/7 nhóm, tìm kiếm/deep link/mobile navigation, ảnh/PDF/link, no-JS và GitHub Pages prefix: pass. Giá, catalog, preview, legend, dữ liệu món ăn/đồ uống và orders.js khớp nguyên bản trước đợt này.
+
+## Popup lịch lễ — 25/11/2026
+
+- Xem ảnh popup thực tế tại 320/390/1440; kiểm tra không tràn ngang ở 320/375/390/430/768/1024/1440/1920. Nút/link có vùng chạm ít nhất 44px; màn hình 320×480 vẫn cuộn tới CTA và nút đóng sticky luôn tiếp cận được.
+- Tự hiện một lần mỗi phiên; Escape/X, focus trap, link xem lại, chuyển sang đặt bàn/menu, storage bị chặn và không làm gián đoạn dialog đang mở: pass. Bản dưới prefix GitHub Pages tải đủ asset. Không JavaScript vẫn có 196 món và lịch lễ bằng HTML.
+- Kiểm tra ngày nghỉ 24–25/12/2026, 01/01/2027; ngày 26/12 từ 17:00 tới trước 22:30. Test mốc 16:59/17:00/22:29/22:30. `scripts/test-calendar.cjs` kiểm tra thêm lịch tuần/ngày không hợp lệ; pass.
+- Mốc hết hạn 01/01 23:59:59 → 02/01/2027 theo Europe/Berlin được kiểm tra trên thiết bị America/Los_Angeles: popup đang mở tự đóng, link xem lại ẩn, tải lại không hiện.
+- Axe popup 390/1440: 0 violations; không lỗi JavaScript hoặc asset. Chạy lại bộ kiểm tra đặt món đầy đủ: 196 món/87 biến thể, số lượng/tổng tiền, persistence, email nháp/copy fallback, bàn phím và 8 viewport đều pass. Chặn email thử, không gửi đơn tới quán.
+- Menu, catalog, preview, allergen, giá, liên hệ, địa chỉ và lịch tuần so với HEAD không đổi. Build lặp lại cho cùng index.html. Không cài thư viện hoặc dùng dịch vụ ngoài.
 - Giỏ hàng/biến thể/beilage/số lượng/tổng tiền/persistence/dữ liệu hỏng/email/copy/fallback/keyboard tại tám viewport pass; axe giỏ mobile/desktop/hộp chọn món/giỏ rỗng 0 violations. Build idempotent và git diff --check sạch. Không thêm dịch vụ bên ngoài.
