@@ -21,10 +21,10 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="holiday.css">
   <script src="dialogs.js" defer></script>
-  <script src="contact.js" defer></script>
+  <script src="contact.js?v=20261126-whatsapp" defer></script>
   <script src="calendar.js" defer></script>
   <script src="app.js" defer></script>
-  <script src="orders.js" defer></script>
+  <script src="orders.js?v=20261126-whatsapp" defer></script>
   <script src="reservations.js" defer></script>
   <script src="holiday-notice.js" defer></script>
   <script type="application/ld+json">
@@ -246,13 +246,14 @@
     <div id="cart-filled" hidden>
       <ul class="cart-items" id="cart-items"></ul>
       <div class="cart-subtotal"><span>Summe der Bestellung</span><strong data-cart-total>0,00 €</strong></div>
-      <form id="order-form">
+      <form id="order-form" data-whatsapp-number="4915253112666">
         <div class="customer-fields"><div class="form-field"><label for="customer-name">Ihr Name</label><input id="customer-name" name="name" autocomplete="name" maxlength="100" required></div><div class="form-field"><label for="customer-phone">Telefon für Rückfragen</label><input id="customer-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" required></div></div>
         <div class="form-field"><label for="order-notes">Anmerkungen <span>(optional)</span></label><textarea id="order-notes" name="notes" rows="3" maxlength="1000" placeholder="Ihre Wünsche oder Fragen zur Bestellung"></textarea></div>
-        <p class="order-explanation">Wir öffnen einen E-Mail-Entwurf mit Ihrer Auswahl. Bitte senden Sie ihn an das Restaurant. Ihre Bestellung wird erst nach Rückmeldung bestätigt.</p>
-        <button class="button button-light full-width" type="submit">E-Mail-Entwurf öffnen <span aria-hidden="true">↗</span></button>
+        <p class="order-explanation">Ihre Bestellung wird in WhatsApp für +49 152 53112666 vorbereitet. Bitte senden Sie die Nachricht dort ab und warten Sie auf die Bestätigung durch das Restaurant.</p>
+        <button class="button button-light full-width" type="submit">Bestellung per WhatsApp <span aria-hidden="true">↗</span></button>
         <div class="order-alternatives"><button type="button" class="text-link" id="copy-order">Bestellung kopieren</button><a class="text-link" href="tel:029439800335">Restaurant anrufen <span aria-hidden="true">↗</span></a></div>
         <p id="order-feedback" class="order-feedback" role="status" aria-live="polite"></p>
+        <a id="whatsapp-order-link" class="text-link" href="https://wa.me/4915253112666" target="_blank" rel="noopener noreferrer" hidden>WhatsApp erneut öffnen <span aria-hidden="true">↗</span></a>
         <div id="manual-copy-field" class="form-field" hidden><label for="manual-order-text">Ihre Bestellung zum Kopieren</label><textarea id="manual-order-text" rows="7" readonly></textarea></div>
       </form>
     </div>

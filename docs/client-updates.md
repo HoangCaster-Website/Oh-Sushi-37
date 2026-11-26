@@ -73,3 +73,7 @@ Theo ảnh thông báo khách gửi: nghỉ 24/12/2026, 25/12/2026 và 01/01/202
 Popup hiện sau 900ms một lần mỗi phiên truy cập, đóng bằng X/Escape/click ngoài; có link xem lại ở hero và bảng giờ. Hủy tự hiện khi khách đang thao tác hoặc mở giỏ/đặt bàn. Session storage bị chặn không làm hỏng popup. Từ 02/01/2027 giờ Đức popup/link tự ẩn, kể cả tab đang mở. Lịch lễ trong contact vẫn đọc được khi không chạy JavaScript.
 
 Thêm lịch ngoại lệ vào Restaurant JSON-LD và cho form đặt bàn dùng cùng nguồn: chặn ngày nghỉ; ngày 26/12 chặn giờ trước 17:00. Menu, giá, địa chỉ, email, giỏ và lịch tuần giữ nguyên.
+
+## Đặt món qua WhatsApp — 26/11/2026
+
+Theo yêu cầu trực tiếp: chuyển đơn hàng đến **+49 15253112666**. Nút “Bestellung per WhatsApp” mở cuộc trò chuyện với mã món/biến thể, số lượng, tổng tiền, tên/điện thoại và ghi chú. Không tự gửi tin hoặc tự xác nhận đơn; khách phải bấm Gửi trong WhatsApp. Giữ copy/copy thủ công/gọi quán và giỏ hàng khi mở chat; bổ sung link mở lại nếu tab bị chặn. Đặt bàn vẫn qua email nguồn, không đổi số điện thoại bàn hoặc dữ liệu menu/lịch lễ.

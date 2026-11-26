@@ -164,3 +164,11 @@ Có semantic landmarks, một h1, heading hierarchy, alt, focus states, skip lin
 - Axe popup 390/1440: 0 violations; không lỗi JavaScript hoặc asset. Chạy lại bộ kiểm tra đặt món đầy đủ: 196 món/87 biến thể, số lượng/tổng tiền, persistence, email nháp/copy fallback, bàn phím và 8 viewport đều pass. Chặn email thử, không gửi đơn tới quán.
 - Menu, catalog, preview, allergen, giá, liên hệ, địa chỉ và lịch tuần so với HEAD không đổi. Build lặp lại cho cùng index.html. Không cài thư viện hoặc dùng dịch vụ ngoài.
 - Giỏ hàng/biến thể/beilage/số lượng/tổng tiền/persistence/dữ liệu hỏng/email/copy/fallback/keyboard tại tám viewport pass; axe giỏ mobile/desktop/hộp chọn món/giỏ rỗng 0 violations. Build idempotent và git diff --check sạch. Không thêm dịch vụ bên ngoài.
+
+## Đặt món qua WhatsApp — 26/11/2026
+
+- Đơn hàng hợp lệ mở `https://wa.me/4915253112666?text=...`, không còn mailto. Kiểm tra mã món/biến thể, số lượng, giá/tổng, tên/điện thoại và ghi chú tiếng Đức có ký tự `& + ?` giữ nguyên sau decode.
+- Link mở tab mới với noopener/noreferrer, có link dự phòng cùng nội dung; chỉnh thông tin/giỏ ẩn link cũ. Giỏ không bị xóa. Thông tin bắt buộc chỉ có khoảng trắng không mở WhatsApp. Copy/copy thủ công tiếp tục pass.
+- Chạy lại 196 món/87 biến thể, quantity/tổng, persistence/dữ liệu lỗi, Tab/Escape/focus và 8 viewport 320/375/390/430/768/1024/1440/1920; axe giỏ 390/1440, hộp lựa chọn và giỏ rỗng: 0 violations. Xem screenshot checkout điện thoại 390px.
+- Đặt bàn vẫn tạo email đến `ohsushirestaurent@gmail.com`. Link WhatsApp và email đều bị chặn trong kiểm thử, không gửi tin/đơn thật.
+- Asset contact.js/orders.js có query version cùng nhau để tránh trình duyệt dùng helper cũ sau triển khai. Build idempotent; các block menu/catalog/preview/allergen và Restaurant JSON-LD khớp nguyên bản trước đợt này.

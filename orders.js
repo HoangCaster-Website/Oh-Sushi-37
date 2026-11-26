@@ -3,7 +3,7 @@
   const catalog = new Map(JSON.parse(document.querySelector('#order-catalog').textContent).map(item => [item.key, item]));
   const money = cents => new Intl.NumberFormat('de-DE', {style: 'currency', currency: 'EUR'}).format(cents / 100);
   const storageKey = 'oh-sushi-37-cart-v1';
-  const {openDraft, copyDraft} = window.RestaurantContact;
+  const {openWhatsApp, copyDraft} = window.RestaurantContact;
   const cartDialog = document.querySelector('#cart-dialog');
   const dishDialog = document.querySelector('#dish-dialog');
   const cartItems = document.querySelector('#cart-items');
@@ -14,6 +14,7 @@
   const toast = document.querySelector('.order-toast');
   const feedback = document.querySelector('#order-feedback');
   const orderForm = document.querySelector('#order-form');
+  const whatsappLink = document.querySelector('#whatsapp-order-link');
   let cart = [];
   let currentDish;
   let toastTimer;
@@ -91,6 +92,7 @@
     document.querySelectorAll('[data-open-cart]').forEach(button => button.setAttribute('aria-label', `Warenkorb öffnen, ${count()} Artikel, ${money(total())}`));
     document.querySelector('.cart-launcher').hidden = cart.length === 0;
     feedback.textContent = '';
+    whatsappLink.hidden = true;
     document.querySelector('#manual-copy-field').hidden = true;
     if (focusTarget) {
       const button = cartItems.querySelector(`[data-cart-action="${focusTarget.action}"][data-index="${focusTarget.index}"]`);
@@ -199,8 +201,13 @@
       field.value = field.value.trim();
     });
     if (!cart.length || !orderForm.reportValidity()) return;
-    openDraft('Bestellanfrage — Oh! Sushi 37', orderText());
-    feedback.textContent = 'Bitte senden Sie den Entwurf in Ihrem E-Mail-Programm. Falls sich kein Programm öffnet, kopieren Sie Ihre Bestellung oder rufen Sie uns an. Ihre Auswahl bleibt im Warenkorb.';
+    whatsappLink.href = openWhatsApp(orderForm.dataset.whatsappNumber, orderText());
+    whatsappLink.hidden = false;
+    feedback.textContent = 'Bitte senden Sie die vorbereitete Nachricht in WhatsApp an das Restaurant und warten Sie auf die Bestätigung. Falls sich WhatsApp nicht öffnet, nutzen Sie den Link unten oder kopieren Sie Ihre Bestellung. Ihre Auswahl bleibt im Warenkorb.';
+  });
+  orderForm.addEventListener('input', () => {
+    feedback.textContent = '';
+    whatsappLink.hidden = true;
   });
   document.querySelector('#copy-order').addEventListener('click', async () => {
     await copyDraft(orderText(), feedback, document.querySelector('#manual-copy-field'), document.querySelector('#manual-order-text'));

@@ -25,11 +25,11 @@ Mở http://localhost:4173/. Không cần npm hoặc framework. Website cũng c�
 - Hai PDF hiện hành có link tải riêng trên website; nguồn đồ uống mới là `NEW-2026-Oh-Sushi-37-A4-Vordruck.pdf`. Bản cũ được giữ làm lịch sử.
 - `styles.css`: typography, palette, bố cục và responsive.
 - `app.js`: navigation mobile, lọc menu, tìm kiếm và liên kết đến nhóm món.
-- `orders.js`: chọn món/biến thể, giỏ hàng, số lượng, tổng tiền và email yêu cầu đặt món.
+- `orders.js`: chọn món/biến thể, giỏ hàng, số lượng, tổng tiền và yêu cầu đặt món qua WhatsApp.
 - `calendar.js`: đọc lịch có ngày hiệu lực từ Restaurant JSON-LD, chuyển giờ theo Europe/Berlin và tự ẩn thông báo ưu đãi khi hết hạn.
 - `holiday-notice.js` / `holiday.css`: popup lịch lễ Giáng sinh và năm mới, tự hiện một lần mỗi phiên; có link xem lại trên hero và trong phần giờ mở cửa.
 - `reservations.js`: form đặt bàn, kiểm tra ngày/giờ theo lịch có hiệu lực cho ngày khách chọn và soạn email yêu cầu.
-- `dialogs.js` / `contact.js`: quản lý dialog, focus bàn phím và email/copy dùng chung cho đặt bàn và đặt món.
+- `dialogs.js` / `contact.js`: quản lý dialog, focus bàn phím và email đặt bàn, WhatsApp đặt món và sao chép yêu cầu.
 - `assets/`: logo, ảnh WebP và font local có giấy phép OFL.
 
 Sau khi chỉnh menu, chạy:
@@ -42,7 +42,7 @@ Script cập nhật HTML menu/preview/legend, nút chọn món, catalog đặt h
 
 Đặt bàn: nút Reservieren/Tisch anfragen mở form ngày, giờ, số khách, tên và điện thoại. Form dùng lịch trong Restaurant JSON-LD; chặn ngày nghỉ theo từng giai đoạn (thứ Ba đến hết 07/11, thứ Hai từ 08/11/2026), ngày/giờ đã qua và giờ ngoài lịch mở cửa. Nút E-Mail-Anfrage öffnen tạo email nháp đến địa chỉ thật của quán; khách gửi và chờ phản hồi xác nhận. Có sao chép yêu cầu và gọi điện dự phòng. Thông tin cá nhân không được lưu. Map mở Google Maps sau khi người dùng bấm; không dùng iframe, analytics hay third-party tracking trên trang.
 
-Đặt món mang về đã bật: thêm món từ menu, chọn biến thể/beilage hoặc dung tích theo nguồn, kiểm tra số lượng/tổng tiền, điền tên và điện thoại. Nút gửi mở email nháp đến `ohsushirestaurent@gmail.com`; khách cần gửi trong ứng dụng email và chờ quán xác nhận. Có sao chép đơn/copy thủ công và gọi điện dự phòng. Chỉ lưu lựa chọn món trong localStorage, không lưu tên/điện thoại/ghi chú. Chưa tích hợp gửi email tự động, PDF hóa đơn hoặc thanh toán. Form đặt bàn vẫn hoạt động độc lập.
+Đặt món mang về đã bật: thêm món từ menu, chọn biến thể/beilage hoặc dung tích theo nguồn, kiểm tra số lượng/tổng tiền, điền tên và điện thoại. Nút “Bestellung per WhatsApp” mở tin nhắn soạn sẵn đến **+49 152 53112666** (`https://wa.me/4915253112666`); khách cần bấm Gửi trong WhatsApp và chờ quán xác nhận. Có link mở lại WhatsApp sau khi gửi yêu cầu, đề phòng trình duyệt không mở tab mới. Có sao chép đơn/copy thủ công và gọi điện dự phòng. Chỉ lưu lựa chọn món trong localStorage, không lưu tên/điện thoại/ghi chú. Chưa tích hợp gửi email tự động, PDF hóa đơn hoặc thanh toán. Form đặt bàn vẫn hoạt động độc lập.
 
 ## Giờ mở cửa và QR
 
